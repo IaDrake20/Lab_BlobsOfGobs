@@ -1,0 +1,6 @@
+@BlobsOfGobs_HostAddress = http://localhost:5011
+
+GET {{BlobsOfGobs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
