@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlobsOfGobs", "BlobsOfGobs.csproj", "{84FA7896-1D68-4A26-9670-67265537C9FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST_BlobsOfGobs", "..\TEST_BlobsOfGobs\TEST_BlobsOfGobs.csproj", "{98265121-DC05-4585-9F23-E2C426A26742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{84FA7896-1D68-4A26-9670-67265537C9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84FA7896-1D68-4A26-9670-67265537C9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84FA7896-1D68-4A26-9670-67265537C9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98265121-DC05-4585-9F23-E2C426A26742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98265121-DC05-4585-9F23-E2C426A26742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98265121-DC05-4585-9F23-E2C426A26742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98265121-DC05-4585-9F23-E2C426A26742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
