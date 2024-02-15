@@ -1,4 +1,4 @@
-﻿namespace BlobsOfGobs
+﻿namespace BlobsOfGobs.Models
 {
     /**
      * IAN: Customer composed of a guid to for referencing, name, and order(s)
@@ -6,25 +6,25 @@
     public class Customer
     {
         private Guid _guid = new Guid();
-        public Guid _GUID 
+        public Guid _GUID
         {
-            get { return this._guid; }
-            set { this._guid = value; }
+            get { return _guid; }
+            set { _guid = value; }
         }
 
         private string _name;
         public string Name
         {
             get { return _name; }
-            set { this._name = value; }
+            set { _name = value; }
         }
 
         //IAN: not sure to use Gob or some kind of order class
         private List<Gob> orders = new List<Gob>();
         public List<Gob> Orders
         {
-            get { return this.orders; }
-            set { this.orders = value; }
+            get { return orders; }
+            set { orders = value; }
         }
     }
 }

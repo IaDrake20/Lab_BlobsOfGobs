@@ -1,4 +1,4 @@
-﻿namespace BlobsOfGobs
+﻿namespace BlobsOfGobs.Models
 {
     /**
      * IAN: an order should contain a guid, list of gobs bought, bool tracking whether the order is paid for
