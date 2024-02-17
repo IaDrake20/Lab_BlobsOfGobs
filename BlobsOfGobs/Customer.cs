@@ -1,4 +1,6 @@
-﻿namespace BlobsOfGobs.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API_BlobsOfGobs
 {
     /**
      * IAN: Customer composed of a guid to for referencing, name, and order(s)
@@ -6,6 +8,8 @@
     public class Customer
     {
         private Guid _guid = new Guid();
+
+        [Key]
         public Guid _GUID
         {
             get { return _guid; }

@@ -1,32 +1,11 @@
-﻿namespace BlobsOfGobs.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace API_BlobsOfGobs.Models;
+
+public partial class Order
 {
-    /**
-     * IAN: an order should contain a guid, list of gobs bought, bool tracking whether the order is paid for
-     * 
-     * 
-     **/
-    public class Order
-    {
-        //IAN: Order ID
-        private Guid id = Guid.NewGuid();
-        public Guid Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+    public string Order1 { get; set; } = null!;
 
-        private List<Gob> orders = new List<Gob>();
-        public List<Gob> Orders
-        {
-            get { return orders; }
-            set { orders = value; }
-        }
-
-        private bool isPaidFor = false;
-        public bool IsPaidFor
-        {
-            get { return isPaidFor; }
-            set { isPaidFor = value; }
-        }
-    }
+    public string? Name { get; set; }
 }
