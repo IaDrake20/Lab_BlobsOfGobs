@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_BlobsOfGobs", "API_Blob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST_BlobsOfGobs", "..\TEST_BlobsOfGobs\TEST_BlobsOfGobs.csproj", "{98265121-DC05-4585-9F23-E2C426A26742}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI.BlobsOfGobs", "..\UI_BlobsOfGobs\UI.BlobsOfGobs.csproj", "{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GobGUI", "..\GobGUI\GobGUI.csproj", "{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +23,12 @@ Global
 		{98265121-DC05-4585-9F23-E2C426A26742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98265121-DC05-4585-9F23-E2C426A26742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98265121-DC05-4585-9F23-E2C426A26742}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4366C7B9-9B0D-441E-B783-CDFD7B71BA68}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
