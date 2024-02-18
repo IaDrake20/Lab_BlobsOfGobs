@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using UI.BlobsOfGobs;
 
-namespace UI_BlobsOfGobs
+namespace UI.BlobsOfGobs
 {
     public static class MauiProgram
     {
