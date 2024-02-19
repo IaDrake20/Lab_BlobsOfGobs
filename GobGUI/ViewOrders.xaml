@@ -3,54 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GobGUI.ViewOrders"
              Title="View All Orders">
-    <VerticalStackLayout>
-        <Button Text="View Orders" 
-                Clicked="Button_Clicked"
-    HorizontalOptions="Center"/>
-        
-        <ListView x:Name="ordersListView">
-     <ListView.ItemTemplate>
-         <DataTemplate>
-             <ViewCell>
-                 <Grid>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width= "150" />
-                         <ColumnDefinition Width= "150" />
-                         <ColumnDefinition Width= "150" />
-                     </Grid.ColumnDefinitions> 
-                     
-        
-                     <Frame Grid.Column="0"
-                     BorderColor="Black"
-                     CornerRadius="0"
-                     HasShadow="False"
-                     Padding="5">
-                         <Label Text="{Binding FirstName}" FontSize="Subtitle" />
-                     </Frame>
-              
-         
-    
-                     <Frame Grid.Column="1"
-                     BorderColor="Black"
-                     CornerRadius="0"
-                     HasShadow="False"
-                     Padding="5">
-                         <Label Text="{Binding LastName}" FontSize="Subtitle" />
-                     </Frame>
-
-           
-                     <Frame Grid.Column="1"
-                     BorderColor="Black"
-                     CornerRadius="0"
-                     HasShadow="False"
-                     Padding="5">
-                         <Label Text="{Binding Phone}" FontSize="Subtitle" />
-                     </Frame>
-                 </Grid>
-             </ViewCell>
-         </DataTemplate>
-     </ListView.ItemTemplate>
- </ListView>
-        
-    </VerticalStackLayout>
+    <ListView ItemsSource="{Binding MasterList}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding DisplayName}" />
+                        <Label Text="{Binding DisplayOrderId}" />
+                        <Label Text="{Binding DisplayGobs}" />
+                    </HorizontalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
