@@ -131,21 +131,21 @@ namespace GobGUI
         { "f13", f13.Text },
             };
                 
-                for (int i = 1; i <= 53; i++)
+                for (int i = 1; i <= 15; i++)
                 {
                     var entry = this.FindByName<Entry>($"e{i}");
                     if (entry.Text != null)
                     {
-                        OrderGob bob = getOrderGobAsync(orderId).Result;
+                        OrderGob bob = getOrderGobsAsync(orderId).Result;
                         int ne=Int32.Parse(entry.Text);
-                        PutQuantityAsync(bob, ne);
+                        await PutOrderGobsAsync(bob, ne);
                         
                     }
                 }
 
             }
     }
-        async private Task PutQuantityAsync(OrderGob ord, int num)
+        async private Task PutOrderGobsAsync(OrderGob ord, int num)
         {
             string apiUrl = "https://localhost:7005/api/OrderGobs";
             
@@ -153,8 +153,8 @@ namespace GobGUI
             {
                 try
                 {
-                    GobFlavor gf = new GobFlavor();
                     
+                    ord.Quantity = num;
                     string jsonString = JsonConvert.SerializeObject(ord);
                     HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
@@ -169,7 +169,7 @@ namespace GobGUI
 
             }
         }
-        async private Task<OrderGob> getOrderGobAsync(String OrderId)
+        async private Task<OrderGob> getOrderGobsAsync(String OrderId)
         {
             OrderGob badval = null;
             string apiUrl = "https://localhost:7005/api/OrderGob";
