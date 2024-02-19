@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace API_BlobsOfGobs.Models;
 
-public partial class Order
+public partial class GobFlavor
 {
-    public string OrderId { get; set; } = null!;
+    public string FlavorId { get; set; } = null!;
 
-    public string CustomerId { get; set; } = null!;
-
-    public bool IsPaid { get; set; }
+    public string FlavorName { get; set; } = null!;
 
     public virtual ICollection<OrderGob> OrderGobs { get; set; } = new List<OrderGob>();
 }
