@@ -23,8 +23,8 @@ namespace API_BlobsOfGobs
 
         public Guid CustomerID
         {
-            get { return id; }
-            set { id = value; }
+            get { return c_id; }
+            set { c_id = value; }
         }
 
         private List<Gob> _orders = new List<Gob>();
