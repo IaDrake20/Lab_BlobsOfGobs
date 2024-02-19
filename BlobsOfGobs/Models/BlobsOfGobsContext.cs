@@ -42,4 +42,8 @@ public partial class BlobsOfGobsContext : DbContext
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
 public DbSet<API_BlobsOfGobs.Orders> Order { get; set; } = default!;
+
+public DbSet<API_BlobsOfGobs.Customer> Customer { get; set; } = default!;
+
+public DbSet<API_BlobsOfGobs.Gob> Gob { get; set; } = default!;
 }
