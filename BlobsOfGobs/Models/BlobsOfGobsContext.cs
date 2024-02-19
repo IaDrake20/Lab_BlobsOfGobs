@@ -41,5 +41,5 @@ public partial class BlobsOfGobsContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-public DbSet<API_BlobsOfGobs.Order> Order { get; set; } = default!;
+public DbSet<API_BlobsOfGobs.Orders> Order { get; set; } = default!;
 }

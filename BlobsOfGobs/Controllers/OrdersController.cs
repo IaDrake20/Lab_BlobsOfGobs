@@ -23,14 +23,14 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrder()
         {
             return await _context.Order.ToListAsync();
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrder(Guid id)
+        public async Task<ActionResult<Orders>> GetOrder(Guid id)
         {
             var order = await _context.Order.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(Guid id, Order order)
+        public async Task<IActionResult> PutOrder(Guid id, Orders order)
         {
             if (id != order.Id)
             {
@@ -76,7 +76,7 @@ namespace API_BlobsOfGobs.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<Orders>> PostOrder(Orders order)
         {
             _context.Order.Add(order);
             await _context.SaveChangesAsync();

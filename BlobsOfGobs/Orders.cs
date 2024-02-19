@@ -7,23 +7,31 @@ namespace API_BlobsOfGobs
      * 
      * 
      **/
-    public class Order
+    public class Orders
     {
         //IAN: Order ID
         private Guid id = Guid.NewGuid();
 
         [Key]
-        public Guid Id
+        public Guid OrderID
         {
             get { return id; }
             set { id = value; }
         }
 
-        private List<Gob> orders = new List<Gob>();
-        public List<Gob> Orders
+        private Guid c_id = Guid.NewGuid();
+
+        public Guid CustomerID
         {
-            get { return orders; }
-            set { orders = value; }
+            get { return id; }
+            set { id = value; }
+        }
+
+        private List<Gob> _orders = new List<Gob>();
+        public List<Gob> _Orders
+        {
+            get { return _orders; }
+            set { _orders = value; }
         }
 
         private bool isPaidFor = false;
