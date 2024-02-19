@@ -107,8 +107,8 @@ namespace GobGUI
         {
             
             string orderId = SearchOrderEntry.Text;
-            bool goodid = GetOrderAsync(orderId).Result;
-            if ( goodid= true)
+            bool goodId = await GetOrderAsync(orderId);
+            if ( goodId= true)
             {
                 
                // string newFirstName = FirstNameEntry.Text;
@@ -136,7 +136,7 @@ namespace GobGUI
                     var entry = this.FindByName<Entry>($"e{i}");
                     if (entry.Text != null)
                     {
-                        OrderGob bob = getOrderGobsAsync(orderId).Result;
+                         OrderGob bob = await getOrderGobsAsync(orderId);
                         int ne=Int32.Parse(entry.Text);
                         await PutOrderGobsAsync(bob, ne);
                         
