@@ -13,7 +13,7 @@
                 <Label Text="Search Order" WidthRequest="100"/>
                 <Entry x:Name="SearchOrderEntry" Placeholder="Enter Order ID" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
-            <Button Text="Search" Clicked="SearchButton_Clicked" HorizontalOptions="Center"/>
+           
             <!-- Display found order details here -->
             <HorizontalStackLayout>
                 <Label Text="First Name" WidthRequest="100"/>

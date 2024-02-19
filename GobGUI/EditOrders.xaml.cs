@@ -1,4 +1,5 @@
 using API_BlobsOfGobs.Models;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
@@ -35,7 +36,7 @@ namespace GobGUI
                         string jsonString = await response.Content.ReadAsStringAsync();
                         flavors = JsonConvert.DeserializeObject<List<GobFlavor>>(jsonString);
 
-                        for (int i = 1; i <= 15; i++)
+                        for (int i = 1; i <= 13; i++)
                         {
                             var label = this.FindByName<Label>($"f{i}");
                             label.Text = flavors.ElementAt(i - 1).FlavorName;
@@ -57,16 +58,63 @@ namespace GobGUI
             }
 
         }
-        private async void SearchButton_Clicked(object sender, EventArgs e)
-        {
-        }
-            private async void Button_Clicked2(object sender, EventArgs e)
-        {
-            string orderId = SearchOrderEntry.Text;
-            string newFirstName = FirstNameEntry.Text;
-            string newLastName = LastNameEntry.Text;
 
-            Dictionary<string, string> flavorQuantities = new Dictionary<string, string>
+        async private Task<GobFlavor> GetFlavorAsync(int num)
+        {
+            string apiUrl = "https://localhost:7005/api/GobFlavors";
+            List<GobFlavor> flavors = null;
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+                        flavors = JsonConvert.DeserializeObject<List<GobFlavor>>(jsonString);
+
+                        for (int i = 1; i <= 15; i++)
+                        {
+                            if (num == i)
+                            {
+                                flavors.ToArray();
+                                GobFlavor fl = flavors[0];
+                                return fl;
+                            }
+                           
+                            
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    return null;
+                }
+
+                return null;
+            }
+
+        }
+        private async void Button_Clicked2(object sender, EventArgs e)
+        {
+            
+            string orderId = SearchOrderEntry.Text;
+            bool goodid = GetOrderAsync(orderId).Result;
+            if ( goodid= true)
+            {
+                
+                string newFirstName = FirstNameEntry.Text;
+                string newLastName = LastNameEntry.Text;
+
+                Dictionary<string, string> flavorQuantities = new Dictionary<string, string>
     {
         { "f1", f1.Text },
         { "f2", f2.Text },
@@ -81,12 +129,23 @@ namespace GobGUI
         { "f11", f11.Text },
         { "f12", f12.Text },
         { "f13", f13.Text },
+            };
+                
+                for (int i = 1; i <= 15; i++)
+                {
+                    var entry = this.FindByName<Entry>($"e{i}");
+                    if (entry.Text != null)
+                    {
+                        OrderGob bob = getOrderGobAsync(orderId).Result;
+                        int ne=Int32.Parse(entry.Text);
+                        //PutQuantityAsync(bob, ne);
+                        
+                    }
+                }
 
-    };
-
-
-        }
-        async private Task PutQuantityAsync(OrderGob ord)
+            }
+    }
+        async private Task PutQuantityAsync(OrderGob ord, GobFlavor fl)
         {
             string apiUrl = "https://localhost:7005/api/OrderGobs";
 
@@ -108,8 +167,51 @@ namespace GobGUI
 
             }
         }
+        async private Task<OrderGob> getOrderGobAsync(String OrderId)
+        {
+            OrderGob badval = null;
+            string apiUrl = "https://localhost:7005/api/OrderGob";
+            List<OrderGob> orders = new List<OrderGob>();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-        async private Task<Boolean> GetOrderAsync(Guid orderID)
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+                        orders = JsonConvert.DeserializeObject<List<OrderGob>>(jsonString);
+                        for (int i = 1; i <= orders.Count; i++)
+                        {
+                            OrderGob[] newarr = orders.ToArray();
+                            string temp = newarr[0].ToString();
+
+                            if (OrderId.Equals(temp))
+                                return newarr[0];
+                            return badval;
+                        }
+                        await DisplayAlert("Error", "Please enter an Order ID", "OK");
+                        
+                    }
+                    else
+                    {
+                        
+                        return badval;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    return badval;
+                }
+
+
+            }
+            return badval;
+        }
+        async private Task<Boolean> GetOrderAsync(String orderID)
         {
             
             string apiUrl = "https://localhost:7005/api/Order";
@@ -127,12 +229,13 @@ namespace GobGUI
                         orders = JsonConvert.DeserializeObject<List<Order>>(jsonString);
                         for(int i=1; i <= orders.Count; i++)
                         {
-                            Guid va = Guid.Empty;
-                            orders.ConvertAll<Guid>;
-                                va=orders.IndexOf(i);
-                            if (orderID.Equals(va))
+                            Order[] newarr = orders.ToArray();
+                            string temp=newarr[1].ToString();
+                           
+                            if (orderID.Equals(temp))
                                 return true;
                         }
+                        await DisplayAlert("Error", "Please enter an Order ID", "OK");
                         return false;
                     }
                     else
