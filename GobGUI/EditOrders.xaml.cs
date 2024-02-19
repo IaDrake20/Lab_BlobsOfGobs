@@ -7,10 +7,11 @@ namespace GobGUI
     public partial class EditOrders : ContentPage
     {
         private HttpClient client = new HttpClient();
-        private OrderManager orderManager = new OrderManager();
+        private OrderManager orderManager;
         public EditOrders()
         {
             InitializeComponent();
+            orderManager = new OrderManager(this);
         }
         private async void Button_Clicked2(object sender, EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace GobGUI
         { "f11", f11.Text },
         { "f12", f12.Text },
         { "f13", f13.Text },
-        // Add other flavors here
+       
     };
 
             bool orderFound = await orderManager.SearchOrder(orderId);
@@ -124,22 +125,24 @@ namespace GobGUI
     {
         private HttpClient client = new HttpClient();
         private string apiUrl = "https://your-api-url.com/orders/";
-        private ContentPage currentPage;
+        private ContentPage _currentPage;
+        public OrderManager(ContentPage currentPage)
+        {
+            _currentPage = currentPage;
+        }
+
         public async Task<bool> UpdateOrderDetails(string orderId, string newFirstName, string newLastName, Dictionary<string, string> flavorQuantities)
         {
             try
             {
-                // Check if both first name and last name are provided
+      
                 if (string.IsNullOrWhiteSpace(newFirstName) || string.IsNullOrWhiteSpace(newLastName))
                 {
-                    await DisplayAlert("Error", "Please enter both first name and last name", "OK");
+                    await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                     return false;
                 }
 
-                // Update fName and lName using appropriate API endpoints
-                // This part is left to be implemented based on your API design
-
-                // Update the flavors from f1 to f13
+                
                 foreach (var kvp in flavorQuantities)
                 {
                     string flavorId = kvp.Key;
@@ -148,7 +151,7 @@ namespace GobGUI
                     // Get the quantity from the entry field
                     if (!int.TryParse(quantity, out int newQuantity))
                     {
-                        await DisplayAlert("Error", $"Please enter a valid quantity for {flavorId}", "OK");
+                        await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                         return false;
                     }
 
@@ -156,13 +159,13 @@ namespace GobGUI
                     // This part is left to be implemented based on your API design
                 }
 
-                await DisplayAlert("Success", "Data updated successfully", "OK");
+                await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                 return true;
             }
             catch (Exception ex)
             {
                 // Handle exceptions
-                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                 return false;
             }
         }
@@ -173,7 +176,7 @@ namespace GobGUI
         {
             if (string.IsNullOrWhiteSpace(orderId))
             {
-                await DisplayAlert("Error", "Please enter an Order ID", "OK");
+                await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                 return false;
             }
 
@@ -189,14 +192,14 @@ namespace GobGUI
                 else
                 {
                     // Order not found
-                    await DisplayAlert("Error", "Order not found", "OK");
+                    await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                     return false;
                 }
             }
             catch (Exception ex)
             {
                 // Handle exceptions
-                await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                await _currentPage.DisplayAlert("Error", "Please enter an Order ID", "OK");
                 return false;
             }
         }
