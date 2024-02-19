@@ -6,6 +6,7 @@ namespace API_BlobsOfGobs
     {
         private String flavorid;
         private String ordergobid;
+        private String orderID;
         private int number;
 
         public String OrderGobID
@@ -26,7 +27,13 @@ namespace API_BlobsOfGobs
             set { number = value; }
         }
 
-        
+        public String OrderID
+        {
+            get { return orderID; }
+            set { orderID = value; }
+        }
+
+
 
     }
 }
