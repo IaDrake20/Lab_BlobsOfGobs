@@ -3,13 +3,109 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GobGUI.NewPage1"
              Title="Add an Order">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-    <HorizontalStackLayout>
-        
-    </HorizontalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="20" Spacing="10">
+            <!-- Dynamically generate or manually copy-paste for each flavor -->
+            <!-- Flavor 1 Entry -->
+            <!-- First Name Field -->
+            
+            <HorizontalStackLayout>
+                <Label Text="First Name" WidthRequest="100"/>
+                <Entry x:Name="FirstNameEntry" Placeholder="Enter first name" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <!-- Last Name Field -->
+            <HorizontalStackLayout>
+                <Label Text="Last Name" WidthRequest="100"/>
+                <Entry x:Name="LastNameEntry" Placeholder="Enter last name" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+            <!-- Repeat the above block for flavors 2 through 15 -->
+
+            
+
+            <!-- Submit Button -->
+            <Button Text="Submit" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
