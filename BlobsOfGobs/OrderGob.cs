@@ -4,24 +4,24 @@ namespace API_BlobsOfGobs
 {
     public class OrderGob
     {
-        private Guid customerid;
-        private Guid flavorid;
-        private Guid ordergobid;
+        private String customerid;
+        private String flavorid;
+        private String ordergobid;
         private int number;
 
-        public Guid OrderGobID
+        public String OrderGobID
         {
             get { return ordergobid; }
             set { ordergobid = value; }
         }
 
-        public Guid FlavorID { 
+        public String FlavorID { 
 
             get { return flavorid; }
             set { flavorid = value; }
         }
 
-        public Guid CustomerID {
+        public String CustomerID {
 
             get { return customerid; } 
             set {  customerid = value; } 
