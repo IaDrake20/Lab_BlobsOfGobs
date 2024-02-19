@@ -50,6 +50,19 @@ public partial class ViewOrders : ContentPage
                 return "Order Number: " + orderid + "\t";
             }
         }
+
+        public string DisplayPrice
+        {
+            get
+            {
+                int count = 0;
+                foreach(var pair in gobs)
+                {
+                    count += pair.Value;
+                }
+                return "Amount Due: $ " + 3.0 * count;
+            }
+        }
     }
 
     async private Task GetOrdersAsync()

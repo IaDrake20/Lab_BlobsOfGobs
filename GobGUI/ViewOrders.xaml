@@ -11,6 +11,7 @@
                         <Label Text="{Binding DisplayName}" />
                         <Label Text="{Binding DisplayOrderId}" />
                         <Label Text="{Binding DisplayGobs}" />
+                        <Label Text="{Binding DisplayPrice}" />
                     </HorizontalStackLayout>
                 </ViewCell>
             </DataTemplate>
