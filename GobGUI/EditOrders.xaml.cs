@@ -36,7 +36,7 @@ namespace GobGUI
                         string jsonString = await response.Content.ReadAsStringAsync();
                         flavors = JsonConvert.DeserializeObject<List<GobFlavor>>(jsonString);
 
-                        for (int i = 1; i <= 13; i++)
+                        for (int i = 1; i <= 15; i++)
                         {
                             var label = this.FindByName<Label>($"f{i}");
                             label.Text = flavors.ElementAt(i - 1).FlavorName;
@@ -131,28 +131,30 @@ namespace GobGUI
         { "f13", f13.Text },
             };
                 
-                for (int i = 1; i <= 15; i++)
+                for (int i = 1; i <= 53; i++)
                 {
                     var entry = this.FindByName<Entry>($"e{i}");
                     if (entry.Text != null)
                     {
                         OrderGob bob = getOrderGobAsync(orderId).Result;
                         int ne=Int32.Parse(entry.Text);
-                        //PutQuantityAsync(bob, ne);
+                        PutQuantityAsync(bob, ne);
                         
                     }
                 }
 
             }
     }
-        async private Task PutQuantityAsync(OrderGob ord, GobFlavor fl)
+        async private Task PutQuantityAsync(OrderGob ord, int num)
         {
             string apiUrl = "https://localhost:7005/api/OrderGobs";
-
+            
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
+                    GobFlavor gf = new GobFlavor();
+                    
                     string jsonString = JsonConvert.SerializeObject(ord);
                     HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
