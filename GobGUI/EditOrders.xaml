@@ -33,81 +33,84 @@
 
 
             <HorizontalStackLayout>
-                <Label Text="Flavor 1" x:Name = "f1" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 2"x:Name = "f2" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 3"x:Name = "f3" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 4"x:Name = "f4" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 5"x:Name = "f5" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 6"x:Name = "f6" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 7"x:Name = "f7" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 8"x:Name = "f8" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 9"x:Name = "f9" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 10"x:Name = "f10" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 11"x:Name = "f11" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 12"x:Name = "f12" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 13"x:Name = "f13" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 14"x:Name = "f14" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
-                <Label Text="Flavor 15"x:Name = "f15" WidthRequest="100"/>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
                     <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
- 
+                <HorizontalStackLayout>
+                    <Label Text="Flavor 1" WidthRequest="100"/>
+                    <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                </HorizontalStackLayout>
                 <!-- Repeat the above block for flavors 2 through 15 -->
 
 
