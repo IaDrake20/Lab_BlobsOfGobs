@@ -1,21 +1,26 @@
+using GobGUI.WinUI;
 using System.Diagnostics;
 
-namespace GobGUI;
-
-public partial class LoginPage : ContentPage
+namespace GobGUI
 {
-	public LoginPage()
-	{
-		InitializeComponent();
-	}
 
-    private void LogInBtn_Clicked(object sender, EventArgs e)
+    public partial class LoginPage : ContentPage
     {
-        LogInBtn.Text = "yes";
-    }
+        private readonly App _app;
+        public LoginPage(App app)
+        {
+            InitializeComponent();
+            _app = app;
+        }
 
-    private void onEntryCompleted()
-    {
+        private void LogInBtn_Clicked(object sender, EventArgs e)
+        {
+            _app.GoToMainPage();
+        }
 
+        private void onEntryCompleted()
+        {
+
+        }
     }
 }
