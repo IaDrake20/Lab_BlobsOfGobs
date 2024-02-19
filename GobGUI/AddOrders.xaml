@@ -43,57 +43,57 @@
 
             <HorizontalStackLayout>
                 <Label x:Name ="f5" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e5" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f6" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e6" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f7" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e7" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f8" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e8" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f9" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e9" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f10" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e10" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f11" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e11" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f12" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e12" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f13" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e13" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f14" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e14" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
                 <Label x:Name ="f15" Text="Flavor 1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name ="e15" Placeholder="Qty" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
 
 
@@ -111,7 +111,7 @@
 
 
             <!-- Submit Button -->
-            <Button Text="Submit" Clicked="Button_Clicked"
+            <Button Text="Submit" Clicked="SubmitBtn_Clicked"
                     HorizontalOptions="Start"/>
 
             <!-- Copy Button -->

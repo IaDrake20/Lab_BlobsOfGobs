@@ -3,11 +3,13 @@ using API_BlobsOfGobs.Models;
 using Microsoft.Maui.Graphics.Text;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Text;
 
 namespace GobGUI;
 
 public partial class NewPage1 : ContentPage
 {
+    private string orderid;
     public NewPage1()
     {
         InitializeComponent();
@@ -66,6 +68,7 @@ public partial class NewPage1 : ContentPage
 
         Order newOrder = new Order();
         newOrder.OrderId = Guid.NewGuid().ToString();
+        orderid = newOrder.OrderId;
         newOrder.CustomerId = newCust.CustomerId;
         newOrder.IsPaid = true;
         await PostOrdersAsync(newOrder);
@@ -103,7 +106,7 @@ public partial class NewPage1 : ContentPage
         for (int i = 1; i <= 15; i++)
         {
             var entry = this.FindByName<Entry>($"e{i}");
-            if (entry != null)
+            if (entry.Text != null)
             {
                 string flavName = this.FindByName<Label>($"f{i}").Text;
                 foreach (GobFlavor flav in flavors)
@@ -111,14 +114,20 @@ public partial class NewPage1 : ContentPage
                     if (flav.FlavorName == flavName)
                     {
                         OrderGob og = new OrderGob();
+                        og.OrderGobId = Guid.NewGuid().ToString();
                         og.OrderId = newOrder.OrderId;
                         og.FlavorId = flav.FlavorId;
                         og.Quantity = int.Parse(entry.Text);
-                        await PostOrderGobAsync(og);
+                        await PostOrderGobsAsync(og);
                     }
                 }
             }
         }
+
+        
+        lblSubmit.Text = "Order #" + newOrder.OrderId + " was successfully submitted.";
+
+        btnCopy.IsVisible = true;
 
     }
 
@@ -130,7 +139,7 @@ public partial class NewPage1 : ContentPage
             try
             {
                 string jsonString = JsonConvert.SerializeObject(cust);
-                HttpContent content = new StringContent(jsonString);
+                HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
@@ -152,7 +161,7 @@ public partial class NewPage1 : ContentPage
             try
             {
                 string jsonString = JsonConvert.SerializeObject(ord);
-                HttpContent content = new StringContent(jsonString);
+                HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
@@ -165,7 +174,7 @@ public partial class NewPage1 : ContentPage
 
         }
     }
-    async private Task PostOrderGobAsync(OrderGob ord)
+    async private Task PostOrderGobsAsync(OrderGob ord)
     {
         string apiUrl = "https://localhost:7005/api/OrderGobs";
         using (HttpClient client = new HttpClient())
@@ -173,7 +182,7 @@ public partial class NewPage1 : ContentPage
             try
             {
                 string jsonString = JsonConvert.SerializeObject(ord);
-                HttpContent content = new StringContent(jsonString);
+                HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
@@ -187,24 +196,15 @@ public partial class NewPage1 : ContentPage
         }
 
     }
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        //temporary way to show different orders
-        orderNum++;
-        lblSubmit.Text = "Order #" + orderNum + " was successfully submitted.";
-
-        btnCopy.IsVisible = true;
-    }
 
     private async void Button_Clicked2(object sender, EventArgs e)
     {
-        String valueToCopy = "" + orderNum;
+        String valueToCopy = "" + orderid;
 
         await Clipboard.SetTextAsync(valueToCopy);
 
         // Optionally, show a confirmation to the user
-        lblSubmit.Text = "Order #" + orderNum + " was copied to the clipboard.";
+        lblSubmit.Text = "Order #" + orderid + " was copied to the clipboard.";
     }
 
-    public int orderNum = 0;
 }
