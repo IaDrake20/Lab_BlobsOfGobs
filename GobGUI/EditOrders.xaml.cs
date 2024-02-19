@@ -196,6 +196,7 @@ namespace GobGUI
                     return false;
                 }
             }
+
             catch (Exception ex)
             {
                 // Handle exceptions
