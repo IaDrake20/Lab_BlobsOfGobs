@@ -92,15 +92,6 @@
                 <Entry Placeholder="Qty" x:Name = "e13" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout>
-                <Label Text="Flavor 14" x:Name = "f14" WidthRequest="100"/>
-                <Entry Placeholder="Qty" x:Name = "e14" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
-                <Label Text="Flavor 15" x:Name = "f15" WidthRequest="100"/>
-                <Entry Placeholder="Qty" x:Name = "e15" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
-                </HorizontalStackLayout>
 
  
                 <!-- Repeat the above block for flavors 2 through 15 -->
@@ -108,7 +99,7 @@
 
 
                 <!-- Submit Button -->
-                <Button Text="Submit" HorizontalOptions="Center"/>
+            <Button Text="Submit" Clicked="Button_Clicked2" HorizontalOptions="Center"/>
             </VerticalStackLayout>
         </ScrollView>
 
