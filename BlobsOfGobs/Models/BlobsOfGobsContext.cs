@@ -22,7 +22,7 @@ public partial class BlobsOfGobsContext : DbContext
 
     public DbSet<API_BlobsOfGobs.Orders> Orders { get; set; } = default!;
 
-    public DbSet<API_BlobsOfGobs.OrderGob> OrderGobs { get; set; } = default!; 
+    public DbSet<API_BlobsOfGobs.OrderGob> OrderGobs { get; set; } = default!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DefaultConnection");
@@ -72,38 +72,6 @@ public partial class BlobsOfGobsContext : DbContext
                 .HasMaxLength(36)
                 .IsUnicode(false)
                 .HasColumnName("CustomerID");
-        });
-
-        modelBuilder.Entity<OrderGob>(entity =>
-        {
-            entity.HasKey(e => e.OrderGobId).HasName("PK__OrderGob__OrderGobID");
-
-            entity.ToTable("OrderGob");
-
-            entity.HasIndex(e => new { e.FlavorId, e.OrderId }, "UqOrderGob").IsUnique();
-
-            entity.Property(e => e.OrderGobId)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("OrderGobID");
-            entity.Property(e => e.FlavorId)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("FlavorID");
-            entity.Property(e => e.OrderId)
-                .HasMaxLength(36)
-                .IsUnicode(false)
-                .HasColumnName("OrderID");
-
-            entity.HasOne(d => d.Flavor).WithMany(p => p.OrderGobs)
-                .HasForeignKey(d => d.FlavorId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderGob__Flavor__17F790F9");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderGobs)
-                .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderGob__OrderI__18EBB532");
         });
 
         OnModelCreatingPartial(modelBuilder);
