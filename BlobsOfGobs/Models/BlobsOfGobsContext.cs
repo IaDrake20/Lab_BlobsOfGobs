@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using API_BlobsOfGobs;
 
 namespace API_BlobsOfGobs.Models;
 
@@ -109,4 +110,10 @@ public partial class BlobsOfGobsContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+public DbSet<API_BlobsOfGobs.Customers> Customers_1 { get; set; } = default!;
+
+public DbSet<API_BlobsOfGobs.GobFlavors> GobFlavors_1 { get; set; } = default!;
+
+public DbSet<API_BlobsOfGobs.Orders> Orders_1 { get; set; } = default!;
 }
