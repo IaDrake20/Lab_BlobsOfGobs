@@ -101,11 +101,25 @@
 
 
 
+            <Label 
+                Text=""
+                x:Name="lblSubmit"
+                TextColor="Green"
+     VerticalOptions="Center" 
+     HorizontalOptions="Center"/>
+
+
+
             <!-- Submit Button -->
-            <Button x:Name ="SubmitBtn" 
-                Text="Submit" 
-                Clicked="SubmitBtn_Clicked"
-                HorizontalOptions="Center"/>
+            <Button Text="Submit" Clicked="Button_Clicked"
+                    HorizontalOptions="Start"/>
+
+            <!-- Copy Button -->
+            <Button Text="Copy #" 
+                        x:Name="btnCopy"
+                        Clicked="Button_Clicked2"
+                    IsVisible="False"
+        HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
