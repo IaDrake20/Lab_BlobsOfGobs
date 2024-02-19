@@ -46,4 +46,6 @@ public DbSet<API_BlobsOfGobs.Orders> Order { get; set; } = default!;
 public DbSet<API_BlobsOfGobs.Customers> Customer { get; set; } = default!;
 
 public DbSet<API_BlobsOfGobs.GobFlavors> Gob { get; set; } = default!;
+
+public DbSet<API_BlobsOfGobs.OrderGob> OrderGob { get; set; } = default!;
 }

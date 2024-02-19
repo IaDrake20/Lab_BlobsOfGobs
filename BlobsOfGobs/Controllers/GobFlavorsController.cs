@@ -12,47 +12,47 @@ namespace API_BlobsOfGobs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GobsController : ControllerBase
+    public class GobFlavorsController : ControllerBase
     {
         private readonly BlobsOfGobsContext _context;
 
-        public GobsController(BlobsOfGobsContext context)
+        public GobFlavorsController(BlobsOfGobsContext context)
         {
             _context = context;
         }
 
-        // GET: api/Gobs
+        // GET: api/GobFlavors
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GobFlavors>>> GetGob()
         {
             return await _context.Gob.ToListAsync();
         }
 
-        // GET: api/Gobs/5
+        // GET: api/GobFlavors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GobFlavors>> GetGob(Guid id)
+        public async Task<ActionResult<GobFlavors>> GetGobFlavors(Guid id)
         {
-            var gob = await _context.Gob.FindAsync(id);
+            var gobFlavors = await _context.Gob.FindAsync(id);
 
-            if (gob == null)
+            if (gobFlavors == null)
             {
                 return NotFound();
             }
 
-            return gob;
+            return gobFlavors;
         }
 
-        // PUT: api/Gobs/5
+        // PUT: api/GobFlavors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGob(Guid id, GobFlavors gob)
+        public async Task<IActionResult> PutGobFlavors(Guid id, GobFlavors gobFlavors)
         {
-            if (id != gob.FlavorID)
+            if (id != gobFlavors.FlavorID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(gob).State = EntityState.Modified;
+            _context.Entry(gobFlavors).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace API_BlobsOfGobs.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GobExists(id))
+                if (!GobFlavorsExists(id))
                 {
                     return NotFound();
                 }
@@ -73,34 +73,34 @@ namespace API_BlobsOfGobs.Controllers
             return NoContent();
         }
 
-        // POST: api/Gobs
+        // POST: api/GobFlavors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<GobFlavors>> PostGob(GobFlavors gob)
+        public async Task<ActionResult<GobFlavors>> PostGobFlavors(GobFlavors gobFlavors)
         {
-            _context.Gob.Add(gob);
+            _context.Gob.Add(gobFlavors);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetGob", new { id = gob.FlavorID }, gob);
+            return CreatedAtAction("GetGobFlavors", new { id = gobFlavors.FlavorID }, gobFlavors);
         }
 
-        // DELETE: api/Gobs/5
+        // DELETE: api/GobFlavors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGob(Guid id)
+        public async Task<IActionResult> DeleteGobFlavors(Guid id)
         {
-            var gob = await _context.Gob.FindAsync(id);
-            if (gob == null)
+            var gobFlavors = await _context.Gob.FindAsync(id);
+            if (gobFlavors == null)
             {
                 return NotFound();
             }
 
-            _context.Gob.Remove(gob);
+            _context.Gob.Remove(gobFlavors);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool GobExists(Guid id)
+        private bool GobFlavorsExists(Guid id)
         {
             return _context.Gob.Any(e => e.FlavorID == id);
         }

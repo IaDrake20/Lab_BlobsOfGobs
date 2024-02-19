@@ -16,14 +16,14 @@ namespace API_BlobsOfGobs
             set { _guid = value; }
         }
 
-        private string _fname;
+        private string? _fname;
         public string Fname
         {
             get { return _fname; }
             set { _fname = value; }
         }
 
-        private string _lname;
+        private string? _lname;
         public string Lname
         {
             get { return _lname; }
