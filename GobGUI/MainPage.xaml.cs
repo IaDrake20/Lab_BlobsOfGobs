@@ -1,7 +1,9 @@
-﻿using GobGUI.Models;
+﻿//using GobGUI.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Text.Json.Serialization;
+using API_BlobsOfGobs;
+using API_BlobsOfGobs.Models;
 
 namespace GobGUI
 {
@@ -15,10 +17,10 @@ namespace GobGUI
         }
 
        
-        async private Task<List<Orders>> GetPeopleAsync()
+        async private Task<List<Order>> GetPeopleAsync()
         {
             string apiUrl = "https://localhost:7005/swagger/api/Orders";
-            List<Orders> orders = null;
+            List<Order> orders = null;
             using (HttpClient client = new HttpClient()) 
             { 
                 try
@@ -29,7 +31,7 @@ namespace GobGUI
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonString = await response.Content.ReadAsStringAsync();
-                        orders = JsonConvert.DeserializeObject<List<Orders>>(jsonString);
+                        orders = JsonConvert.DeserializeObject<List<Order>>(jsonString);
                     }
                     else
                     {
