@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 //using Xamarin.Forms;
@@ -83,8 +84,8 @@ namespace GobGUI
                                 GobFlavor fl = flavors[0];
                                 return fl;
                             }
-                           
-                            
+
+
                         }
                     }
                     else
@@ -105,14 +106,14 @@ namespace GobGUI
         }
         private async void Button_Clicked2(object sender, EventArgs e)
         {
-            
+
             string orderId = SearchOrderEntry.Text;
             bool goodId = await GetOrderAsync(orderId);
-            if ( goodId= true)
+            if (goodId = true)
             {
-                
-               // string newFirstName = FirstNameEntry.Text;
-               // string newLastName = LastNameEntry.Text;
+
+                // string newFirstName = FirstNameEntry.Text;
+                // string newLastName = LastNameEntry.Text;
 
                 Dictionary<string, string> flavorQuantities = new Dictionary<string, string>
     {
@@ -130,30 +131,39 @@ namespace GobGUI
         { "f12", f12.Text },
         { "f13", f13.Text },
             };
-                
+
                 for (int i = 1; i <= 15; i++)
                 {
                     var entry = this.FindByName<Entry>($"e{i}");
-                    if (entry.Text != null)
+                    try
                     {
-                         OrderGob bob = await getOrderGobsAsync(orderId);
-                        int ne=Int32.Parse(entry.Text);
-                        await PutOrderGobsAsync(bob, ne);
-                        
+                        if (entry.Text != null)
+                        {
+                            OrderGob bob = await getOrderGobsAsync(orderId);
+                            int ne = Int32.Parse(entry.Text);
+                            await PutOrderGobsAsync(bob, ne);
+
+                        }
                     }
+                    catch (Exception te)
+                    {
+
+                    }
+
+
                 }
 
             }
-    }
+        }
         async private Task PutOrderGobsAsync(OrderGob ord, int num)
         {
             string apiUrl = "https://localhost:7005/api/OrderGobs";
-            
+
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    
+
                     ord.Quantity = num;
                     string jsonString = JsonConvert.SerializeObject(ord);
                     HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -195,11 +205,11 @@ namespace GobGUI
                             return badval;
                         }
                         await DisplayAlert("Error", "Please enter an Order ID", "OK");
-                        
+
                     }
                     else
                     {
-                        
+
                         return badval;
                     }
                 }
@@ -213,46 +223,43 @@ namespace GobGUI
             }
             return badval;
         }
-        async private Task<Boolean> GetOrderAsync(String orderID)
+        async private Task<bool> GetOrderAsync(string orderID)
         {
-            
-            string apiUrl = "https://localhost:7005/api/Order";
+            string apiUrl = "https://localhost:7005/api/Orders";
             List<Order> orders = new List<Order>();
+
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
-                    
 
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonString = await response.Content.ReadAsStringAsync();
                         orders = JsonConvert.DeserializeObject<List<Order>>(jsonString);
-                        for(int i=1; i <= orders.Count; i++)
+
+                        foreach (Order order in orders)
                         {
-                            Order[] newarr = orders.ToArray();
-                            string temp=newarr[1].ToString();
-                           
-                            if (orderID.Equals(temp))
+                            if (orderID.Equals(order.OrderId))
                                 return true;
                         }
-                        await DisplayAlert("Error", "Please enter an Order ID", "OK");
+
+                        await DisplayAlert("Error", "Order not found", "OK");
                         return false;
                     }
                     else
                     {
-                        await DisplayAlert("Error", "Please enter an Order ID", "OK");
+                        await DisplayAlert("Error", "Failed to retrieve orders", "OK");
                         return false;
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
+                    await DisplayAlert("Error", "An error occurred while processing the request", "OK");
                     return false;
                 }
-
-                
             }
         }
     }
