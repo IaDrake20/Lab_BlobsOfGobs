@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GobGUI.EditOrders"
+<<<<<<< Updated upstream
              Title="Edit an Order">
     
         <ScrollView>
@@ -9,17 +10,21 @@
                 <!-- Dynamically generate or manually copy-paste for each flavor -->
                 <!-- Flavor 1 Entry -->
                 <!-- First Name Field -->
+=======
+             Title="EditOrders">
+>>>>>>> Stashed changes
 
-                <HorizontalStackLayout>
-                    <Label Text="Order #" WidthRequest="100"/>
-                    <Entry x:Name="EnterOrder" Placeholder="Enter order number" HorizontalOptions="FillAndExpand"/>
-                </HorizontalStackLayout>
-                
-                <VerticalStackLayout>
-                    <Button Text="Search" Margin="25"
-                            HorizontalOptions="Start"/>
-            </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Margin="20" Spacing="10">
+            <!-- Other UI elements -->
 
+            <!-- Search Order Section -->
+            <HorizontalStackLayout>
+                <Label Text="Search Order" WidthRequest="100"/>
+                <Entry x:Name="SearchOrderEntry" Placeholder="Enter Order ID" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+            <Button Text="Search" Clicked="SearchButton_Clicked" HorizontalOptions="Center"/>
+            <!-- Display found order details here -->
             <HorizontalStackLayout>
                 <Label Text="First Name" WidthRequest="100"/>
                 <Entry x:Name="FirstNameEntry" Placeholder="Enter first name" HorizontalOptions="FillAndExpand"/>
@@ -30,14 +35,14 @@
                 <Label Text="Last Name" WidthRequest="100"/>
                 <Entry x:Name="LastNameEntry" Placeholder="Enter last name" HorizontalOptions="FillAndExpand"/>
             </HorizontalStackLayout>
-
-
+            <!-- Dynamically generated flavor entries -->
+            <!-- Example entries for Flavor 1 and Flavor 2 -->
             <HorizontalStackLayout>
-                <Label Text="Flavor 1" x:Name = "f1" WidthRequest="100"/>
-                <Entry Placeholder="Qty" x:Name = "e1" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
+                <Label Text="Flavor 1" WidthRequest="100"/>
+                <Entry Placeholder="Qty" x:Name="Flavor1Entry" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+            </HorizontalStackLayout>
+            
+            <HorizontalStackLayout>
                 <Label Text="Flavor 2" x:Name = "f2" WidthRequest="100"/>
                 <Entry Placeholder="Qty" x:Name = "e2" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
                 </HorizontalStackLayout>
