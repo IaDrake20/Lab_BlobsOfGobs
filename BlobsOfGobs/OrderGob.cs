@@ -1,10 +1,13 @@
-﻿namespace API_BlobsOfGobs
+﻿using System.Drawing.Printing;
+
+namespace API_BlobsOfGobs
 {
     public class OrderGob
     {
         private Guid customerid;
         private Guid flavorid;
         private Guid ordergobid;
+        private int number;
 
         public Guid OrderGobID
         {
@@ -23,6 +26,14 @@
             get { return customerid; } 
             set {  customerid = value; } 
         }
+
+        public int Quantity
+        {
+            get { return number; }
+            set { number = value; }
+        }
+
+        
 
     }
 }
