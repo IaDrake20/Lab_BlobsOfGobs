@@ -16,14 +16,14 @@ namespace GobGUI
             InitializeComponent();
         }
 
-        private void ShowOrdersBtn_Clicked(object sender, EventArgs e)
+        private async void ShowOrdersBtn_Clicked(object sender, EventArgs e)
         {
-           //await Navigation.PushAsync(new ViewOrdersPage());
+           await Navigation.PushAsync(new ViewOrders());
         }
 
-        private void EditOrderBtn_Clicked(object sender, EventArgs e)
+        private async void EditOrderBtn_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new EditOrdersPage());
+            await Navigation.PushAsync(new EditOrders());
         }
 
         private async void StartOrderBtn_Clicked(object sender, EventArgs e)
