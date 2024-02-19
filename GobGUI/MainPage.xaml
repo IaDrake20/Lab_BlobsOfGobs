@@ -6,7 +6,7 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="50">
+            Spacing="75">
 
             <Label 
             Text="Pick an option below:"
@@ -33,49 +33,7 @@
                 
                 Clicked="ShowOrdersBtn_Clicked"
                 HorizontalOptions="Fill" />
-
-            <!--<ListView x:Name="ordersListView">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width= "150" />
-                                    <ColumnDefinition Width= "150" />
-                                    <ColumnDefinition Width= "150" />
-                                </Grid.ColumnDefinitions>
-                                
-                                --><!-- First Name --><!--
-                                <Frame Grid.Column="0"
-                                BorderColor="Black"
-                                CornerRadius="0"
-                                HasShadow="False"
-                                Padding="5">
-                                    <Label Text="{Binding FirstName}" FontSize="Subtitle" />
-                                </Frame>
-
-                                --><!-- Last Name --><!--
-                                <Frame Grid.Column="1"
-                                BorderColor="Black"
-                                CornerRadius="0"
-                                HasShadow="False"
-                                Padding="5">
-                                    <Label Text="{Binding LastName}" FontSize="Subtitle" />
-                                </Frame>
-
-                                --><!-- Phone --><!--
-                                <Frame Grid.Column="1"
-                                BorderColor="Black"
-                                CornerRadius="0"
-                                HasShadow="False"
-                                Padding="5">
-                                    <Label Text="{Binding Phone}" FontSize="Subtitle" />
-                                </Frame>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
+           
             
         </VerticalStackLayout>
     </ScrollView>
