@@ -29,13 +29,5 @@ namespace API_BlobsOfGobs
             get { return _lname; }
             set { _lname = value; }
         }
-
-        //IAN: not sure to use Gob or some kind of order class
-        private List<GobFlavors> orders = new List<GobFlavors>();
-        public List<GobFlavors> Orders
-        {
-            get { return orders; }
-            set { orders = value; }
-        }
     }
 }

@@ -30,7 +30,7 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/OrderGobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderGob>> GetOrderGob(Guid id)
+        public async Task<ActionResult<OrderGob>> GetOrderGob(string id)
         {
             var orderGob = await _context.OrderGob.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/OrderGobs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderGob(Guid id, OrderGob orderGob)
+        public async Task<IActionResult> PutOrderGob(string id, OrderGob orderGob)
         {
             if (id != orderGob.OrderGobID)
             {
@@ -79,14 +79,28 @@ namespace API_BlobsOfGobs.Controllers
         public async Task<ActionResult<OrderGob>> PostOrderGob(OrderGob orderGob)
         {
             _context.OrderGob.Add(orderGob);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrderGobExists(orderGob.OrderGobID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtAction("GetOrderGob", new { id = orderGob.OrderGobID }, orderGob);
         }
 
         // DELETE: api/OrderGobs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrderGob(Guid id)
+        public async Task<IActionResult> DeleteOrderGob(string id)
         {
             var orderGob = await _context.OrderGob.FindAsync(id);
             if (orderGob == null)
@@ -100,7 +114,7 @@ namespace API_BlobsOfGobs.Controllers
             return NoContent();
         }
 
-        private bool OrderGobExists(Guid id)
+        private bool OrderGobExists(string id)
         {
             return _context.OrderGob.Any(e => e.OrderGobID == id);
         }

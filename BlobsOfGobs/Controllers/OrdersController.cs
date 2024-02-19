@@ -30,29 +30,29 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Orders>> GetOrder(Guid id)
+        public async Task<ActionResult<Orders>> GetOrders(string id)
         {
-            var order = await _context.Order.FindAsync(id);
+            var orders = await _context.Order.FindAsync(id);
 
-            if (order == null)
+            if (orders == null)
             {
                 return NotFound();
             }
 
-            return order;
+            return orders;
         }
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(Guid id, Orders order)
+        public async Task<IActionResult> PutOrders(string id, Orders orders)
         {
-            if (id != order.OrderID)
+            if (id != orders.OrderID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(order).State = EntityState.Modified;
+            _context.Entry(orders).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace API_BlobsOfGobs.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderExists(id))
+                if (!OrdersExists(id))
                 {
                     return NotFound();
                 }
@@ -76,31 +76,45 @@ namespace API_BlobsOfGobs.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Orders>> PostOrder(Orders order)
+        public async Task<ActionResult<Orders>> PostOrders(Orders orders)
         {
-            _context.Order.Add(order);
-            await _context.SaveChangesAsync();
+            _context.Order.Add(orders);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrdersExists(orders.OrderID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetOrder", new { id = order.OrderID }, order);
+            return CreatedAtAction("GetOrders", new { id = orders.OrderID }, orders);
         }
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrder(Guid id)
+        public async Task<IActionResult> DeleteOrders(string id)
         {
-            var order = await _context.Order.FindAsync(id);
-            if (order == null)
+            var orders = await _context.Order.FindAsync(id);
+            if (orders == null)
             {
                 return NotFound();
             }
 
-            _context.Order.Remove(order);
+            _context.Order.Remove(orders);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool OrderExists(Guid id)
+        private bool OrdersExists(string id)
         {
             return _context.Order.Any(e => e.OrderID == id);
         }

@@ -30,29 +30,29 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customers>> GetCustomer(Guid id)
+        public async Task<ActionResult<Customers>> GetCustomers(string id)
         {
-            var customer = await _context.Customer.FindAsync(id);
+            var customers = await _context.Customer.FindAsync(id);
 
-            if (customer == null)
+            if (customers == null)
             {
                 return NotFound();
             }
 
-            return customer;
+            return customers;
         }
 
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(Guid id, Customers customer)
+        public async Task<IActionResult> PutCustomers(string id, Customers customers)
         {
-            if (id != customer.CustomerID)
+            if (id != customers.CustomerID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            _context.Entry(customers).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace API_BlobsOfGobs.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!CustomersExists(id))
                 {
                     return NotFound();
                 }
@@ -76,31 +76,45 @@ namespace API_BlobsOfGobs.Controllers
         // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Customers>> PostCustomer(Customers customer)
+        public async Task<ActionResult<Customers>> PostCustomers(Customers customers)
         {
-            _context.Customer.Add(customer);
-            await _context.SaveChangesAsync();
+            _context.Customer.Add(customers);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (CustomersExists(customers.CustomerID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetCustomer", new { id = customer.CustomerID }, customer);
+            return CreatedAtAction("GetCustomers", new { id = customers.CustomerID }, customers);
         }
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomer(Guid id)
+        public async Task<IActionResult> DeleteCustomers(string id)
         {
-            var customer = await _context.Customer.FindAsync(id);
-            if (customer == null)
+            var customers = await _context.Customer.FindAsync(id);
+            if (customers == null)
             {
                 return NotFound();
             }
 
-            _context.Customer.Remove(customer);
+            _context.Customer.Remove(customers);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CustomerExists(Guid id)
+        private bool CustomersExists(string id)
         {
             return _context.Customer.Any(e => e.CustomerID == id);
         }
