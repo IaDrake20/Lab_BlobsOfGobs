@@ -111,8 +111,8 @@ namespace GobGUI
             if ( goodid= true)
             {
                 
-                string newFirstName = FirstNameEntry.Text;
-                string newLastName = LastNameEntry.Text;
+               // string newFirstName = FirstNameEntry.Text;
+               // string newLastName = LastNameEntry.Text;
 
                 Dictionary<string, string> flavorQuantities = new Dictionary<string, string>
     {

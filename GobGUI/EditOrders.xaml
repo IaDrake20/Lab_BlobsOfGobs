@@ -15,16 +15,16 @@
             </HorizontalStackLayout>
            
             <!-- Display found order details here -->
-            <HorizontalStackLayout>
-                <Label Text="First Name" WidthRequest="100"/>
-                <Entry x:Name="FirstNameEntry" Placeholder="Enter first name" HorizontalOptions="FillAndExpand"/>
-            </HorizontalStackLayout>
+            <!--HorizontalStackLayout-->
+                <!--Label Text="First Name" WidthRequest="100"/-->
+                <!--Entry x:Name="FirstNameEntry" Placeholder="Enter first name" HorizontalOptions="FillAndExpand"/-->
+            <!--/HorizontalStackLayout-->
 
             <!-- Last Name Field -->
-            <HorizontalStackLayout>
-                <Label Text="Last Name" WidthRequest="100"/>
-                <Entry x:Name="LastNameEntry" Placeholder="Enter last name" HorizontalOptions="FillAndExpand"/>
-            </HorizontalStackLayout>
+            <!--HorizontalStackLayout-->
+                <!--Label Text="Last Name" WidthRequest="100"/-->
+                <!--Entry x:Name="LastNameEntry" Placeholder="Enter last name" HorizontalOptions="FillAndExpand"/-->
+            <!--/HorizontalStackLayout-->
             <!-- Dynamically generated flavor entries -->
             <!-- Example entries for Flavor 1 and Flavor 2 -->
             <HorizontalStackLayout>
