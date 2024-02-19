@@ -19,7 +19,7 @@ namespace GobGUI
        
         async private Task<List<Order>> GetPeopleAsync()
         {
-            string apiUrl = "https://localhost:7005/swagger/api/Orders";
+            string apiUrl = "https://localhost:7005/api/Orders";
             List<Order> orders = null;
             using (HttpClient client = new HttpClient()) 
             { 

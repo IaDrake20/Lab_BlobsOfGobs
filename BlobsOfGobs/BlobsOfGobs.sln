@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_BlobsOfGobs", "API_Blob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST_BlobsOfGobs", "..\TEST_BlobsOfGobs\TEST_BlobsOfGobs.csproj", "{98265121-DC05-4585-9F23-E2C426A26742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GobGUI", "..\GobGUI\GobGUI.csproj", "{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GobGUI", "..\GobGUI\GobGUI.csproj", "{18D8DEB5-0D1B-4FC3-9E89-7ECC120DE791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
