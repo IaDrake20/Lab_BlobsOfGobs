@@ -10,22 +10,29 @@ namespace API_BlobsOfGobs
         private Guid _guid = new Guid();
 
         [Key]
-        public Guid _GUID
+        public Guid CustomerID
         {
             get { return _guid; }
             set { _guid = value; }
         }
 
-        private string _name;
-        public string Name
+        private string _fname;
+        public string Fname
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _fname; }
+            set { _fname = value; }
+        }
+
+        private string _lname;
+        public string Lname
+        {
+            get { return _lname; }
+            set { _lname = value; }
         }
 
         //IAN: not sure to use Gob or some kind of order class
-        private List<Gob> orders = new List<Gob>();
-        public List<Gob> Orders
+        private List<GobFlavors> orders = new List<GobFlavors>();
+        public List<GobFlavors> Orders
         {
             get { return orders; }
             set { orders = value; }
