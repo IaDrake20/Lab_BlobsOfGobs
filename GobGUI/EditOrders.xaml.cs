@@ -2,6 +2,7 @@ using API_BlobsOfGobs.Models;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 //using Xamarin.Forms;
@@ -108,38 +109,42 @@ namespace GobGUI
             }
         }
 
-        async private Task GetOrderAsync()
+        async private Task<Boolean> GetOrderAsync(Guid orderID)
         {
+            
             string apiUrl = "https://localhost:7005/api/Order";
-            List<GobFlavor> flavors = null;
+            List<Order> orders = new List<Order>();
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
-
+                    
 
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonString = await response.Content.ReadAsStringAsync();
-                        flavors = JsonConvert.DeserializeObject<List<GobFlavor>>(jsonString);
-
-                        for (int i = 1; i <= 15; i++)
+                        orders = JsonConvert.DeserializeObject<List<Order>>(jsonString);
+                        for(int i=1; i <= orders.Count; i++)
                         {
-                            var label = this.FindByName<Label>($"f{i}");
-                            label.Text = flavors.ElementAt(i - 1).FlavorName;
+                            Guid va = Guid.Empty;
+                            orders.ConvertAll<Guid>;
+                                va=orders.IndexOf(i);
+                            if (orderID.Equals(va))
+                                return true;
                         }
+                        return false;
                     }
                     else
                     {
-                        Debug.WriteLine("API request failed with status code:" + response.StatusCode);
-                        
+                        await DisplayAlert("Error", "Please enter an Order ID", "OK");
+                        return false;
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
-                    
+                    return false;
                 }
 
                 
