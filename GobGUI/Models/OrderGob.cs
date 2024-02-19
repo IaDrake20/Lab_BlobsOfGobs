@@ -1,36 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GobGUI.Models
+namespace API_BlobsOfGobs.Models;
+
+public partial class OrderGob
 {
-    internal class OrderGob
-    {
-        private Guid customerid;
-        private Guid flavorid;
-        private Guid ordergobid;
+    public string OrderGobId { get; set; } = null!;
 
-        public Guid OrderGobID
-        {
-            get { return ordergobid; }
-            set { ordergobid = value; }
-        }
+    public string FlavorId { get; set; } = null!;
 
-        public Guid FlavorID
-        {
+    public string OrderId { get; set; } = null!;
 
-            get { return flavorid; }
-            set { flavorid = value; }
-        }
+    public int Quantity { get; set; }
 
-        public Guid CustomerID
-        {
+    public virtual GobFlavor Flavor { get; set; } = null!;
 
-            get { return customerid; }
-            set { customerid = value; }
-        }
-    
-    }
+    public virtual Order Order { get; set; } = null!;
 }
