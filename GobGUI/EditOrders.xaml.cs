@@ -124,7 +124,7 @@ namespace GobGUI
     public class OrderManager
     {
         private HttpClient client = new HttpClient();
-        private string apiUrl = "https://your-api-url.com/orders/";
+        private string apiUrl = "https://localhost:7005/api/OrderGobs";
         private ContentPage _currentPage;
         public OrderManager(ContentPage currentPage)
         {
@@ -196,6 +196,7 @@ namespace GobGUI
                     return false;
                 }
             }
+
 
             catch (Exception ex)
             {
