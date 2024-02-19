@@ -102,10 +102,16 @@
             </HorizontalStackLayout>
             <!-- Repeat the above block for flavors 2 through 15 -->
 
-            
+            <Label 
+                Text=""
+                x:Name="lblSubmit"
+                TextColor="Green"
+     VerticalOptions="Center" 
+     HorizontalOptions="Center"/>
 
             <!-- Submit Button -->
-            <Button Text="Submit" HorizontalOptions="Center"/>
+            <Button Text="Submit" Clicked="Button_Clicked"
+                    HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
