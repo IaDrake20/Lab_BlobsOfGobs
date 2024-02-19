@@ -43,7 +43,7 @@ public partial class BlobsOfGobsContext : DbContext
 
 public DbSet<API_BlobsOfGobs.Orders> Order { get; set; } = default!;
 
-public DbSet<API_BlobsOfGobs.Customer> Customer { get; set; } = default!;
+public DbSet<API_BlobsOfGobs.Customers> Customer { get; set; } = default!;
 
 public DbSet<API_BlobsOfGobs.Gob> Gob { get; set; } = default!;
 }

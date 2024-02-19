@@ -5,7 +5,7 @@ namespace API_BlobsOfGobs
     /**
      * IAN: Customer composed of a guid to for referencing, name, and order(s)
      **/
-    public class Customer
+    public class Customers
     {
         private Guid _guid = new Guid();
 

@@ -34,18 +34,11 @@ namespace API_BlobsOfGobs
             set { _orders = value; }
         }
 
-        private bool isPaidFor = false;
-        public bool IsPaidFor
+        private bool isPaid = false;
+        public bool IsPaid
         {
-            get { return isPaidFor; }
-            set { isPaidFor = value; }
-        }
-
-        private string name = string.Empty;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
+            get { return isPaid; }
+            set { isPaid = value; }
         }
     }
 }

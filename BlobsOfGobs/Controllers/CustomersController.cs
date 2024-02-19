@@ -23,14 +23,14 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer()
+        public async Task<ActionResult<IEnumerable<Customers>>> GetCustomer()
         {
             return await _context.Customer.ToListAsync();
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(Guid id)
+        public async Task<ActionResult<Customers>> GetCustomer(Guid id)
         {
             var customer = await _context.Customer.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(Guid id, Customer customer)
+        public async Task<IActionResult> PutCustomer(Guid id, Customers customer)
         {
             if (id != customer._GUID)
             {
@@ -76,7 +76,7 @@ namespace API_BlobsOfGobs.Controllers
         // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<Customers>> PostCustomer(Customers customer)
         {
             _context.Customer.Add(customer);
             await _context.SaveChangesAsync();
