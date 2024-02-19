@@ -6,16 +6,35 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
-            
+            Spacing="50">
+
+            <Label 
+            Text="Pick an option below:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+
             <Button
-                x:Name="GetDataBtn"
-                Text="Get Data" 
+            x:Name="StartOrderBtn"
+            Text="Start A New Order" 
+    
+            Clicked="StartOrderBtn_Clicked"
+            HorizontalOptions="Fill" />
+
+            <Button
+            x:Name="EditOrderBtn"
+            Text="Edit an Existing Order" 
+    
+            Clicked="EditOrderBtn_Clicked"
+            HorizontalOptions="Fill" />
+
+            <Button
+                x:Name="ShowOrdersBtn"
+                Text="Show All Orders" 
                 
-                Clicked="GetDataBtn_Clicked"
+                Clicked="ShowOrdersBtn_Clicked"
                 HorizontalOptions="Fill" />
 
-            <ListView x:Name="ordersListView">
+            <!--<ListView x:Name="ordersListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,7 +45,7 @@
                                     <ColumnDefinition Width= "150" />
                                 </Grid.ColumnDefinitions>
                                 
-                                <!-- First Name -->
+                                --><!-- First Name --><!--
                                 <Frame Grid.Column="0"
                                 BorderColor="Black"
                                 CornerRadius="0"
@@ -35,7 +54,7 @@
                                     <Label Text="{Binding FirstName}" FontSize="Subtitle" />
                                 </Frame>
 
-                                <!-- Last Name -->
+                                --><!-- Last Name --><!--
                                 <Frame Grid.Column="1"
                                 BorderColor="Black"
                                 CornerRadius="0"
@@ -44,7 +63,7 @@
                                     <Label Text="{Binding LastName}" FontSize="Subtitle" />
                                 </Frame>
 
-                                <!-- Phone -->
+                                --><!-- Phone --><!--
                                 <Frame Grid.Column="1"
                                 BorderColor="Black"
                                 CornerRadius="0"
@@ -56,7 +75,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
             
         </VerticalStackLayout>
     </ScrollView>

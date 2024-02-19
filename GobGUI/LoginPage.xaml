@@ -14,7 +14,8 @@
         <Entry x:Name="Username"
        Placeholder="username"/>
 
-        <Entry x:Name="password"
+        <Entry IsPassword="True"
+            x:Name="password"
         Placeholder="password"/>
 
         <Button
