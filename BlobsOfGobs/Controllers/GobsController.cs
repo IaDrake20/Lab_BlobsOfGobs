@@ -23,14 +23,14 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/Gobs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Gob>>> GetGob()
+        public async Task<ActionResult<IEnumerable<GobFlavors>>> GetGob()
         {
             return await _context.Gob.ToListAsync();
         }
 
         // GET: api/Gobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Gob>> GetGob(Guid id)
+        public async Task<ActionResult<GobFlavors>> GetGob(Guid id)
         {
             var gob = await _context.Gob.FindAsync(id);
 
@@ -45,9 +45,9 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/Gobs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGob(Guid id, Gob gob)
+        public async Task<IActionResult> PutGob(Guid id, GobFlavors gob)
         {
-            if (id != gob.Id)
+            if (id != gob.FlavorID)
             {
                 return BadRequest();
             }
@@ -76,12 +76,12 @@ namespace API_BlobsOfGobs.Controllers
         // POST: api/Gobs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Gob>> PostGob(Gob gob)
+        public async Task<ActionResult<GobFlavors>> PostGob(GobFlavors gob)
         {
             _context.Gob.Add(gob);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetGob", new { id = gob.Id }, gob);
+            return CreatedAtAction("GetGob", new { id = gob.FlavorID }, gob);
         }
 
         // DELETE: api/Gobs/5
@@ -102,7 +102,7 @@ namespace API_BlobsOfGobs.Controllers
 
         private bool GobExists(Guid id)
         {
-            return _context.Gob.Any(e => e.Id == id);
+            return _context.Gob.Any(e => e.FlavorID == id);
         }
     }
 }

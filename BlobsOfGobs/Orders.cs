@@ -27,8 +27,8 @@ namespace API_BlobsOfGobs
             set { c_id = value; }
         }
 
-        private List<Gob> _orders = new List<Gob>();
-        public List<Gob> _Orders
+        private List<GobFlavors> _orders = new List<GobFlavors>();
+        public List<GobFlavors> _Orders
         {
             get { return _orders; }
             set { _orders = value; }

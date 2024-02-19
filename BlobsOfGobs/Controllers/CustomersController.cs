@@ -47,7 +47,7 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(Guid id, Customers customer)
         {
-            if (id != customer._GUID)
+            if (id != customer.CustomerID)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace API_BlobsOfGobs.Controllers
             _context.Customer.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer._GUID }, customer);
+            return CreatedAtAction("GetCustomer", new { id = customer.CustomerID }, customer);
         }
 
         // DELETE: api/Customers/5
@@ -102,7 +102,7 @@ namespace API_BlobsOfGobs.Controllers
 
         private bool CustomerExists(Guid id)
         {
-            return _context.Customer.Any(e => e._GUID == id);
+            return _context.Customer.Any(e => e.CustomerID == id);
         }
     }
 }
