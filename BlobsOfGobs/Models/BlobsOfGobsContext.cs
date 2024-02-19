@@ -22,9 +22,7 @@ public partial class BlobsOfGobsContext : DbContext
 
     public DbSet<API_BlobsOfGobs.Orders> Orders { get; set; } = default!;
 
-    
-
-    public virtual DbSet<OrderGob> OrderGobs { get; set; }
+    public DbSet<API_BlobsOfGobs.OrderGob> OrderGobs { get; set; } = default!; 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DefaultConnection");
