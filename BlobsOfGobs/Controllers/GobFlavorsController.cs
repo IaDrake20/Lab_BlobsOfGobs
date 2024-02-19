@@ -23,16 +23,16 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/GobFlavors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GobFlavors>>> GetGob()
+        public async Task<ActionResult<IEnumerable<GobFlavors>>> GetGobFlavors_1()
         {
-            return await _context.Gob.ToListAsync();
+            return await _context.GobFlavors.ToListAsync();
         }
 
         // GET: api/GobFlavors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GobFlavors>> GetGobFlavors(Guid id)
+        public async Task<ActionResult<GobFlavors>> GetGobFlavors(string id)
         {
-            var gobFlavors = await _context.Gob.FindAsync(id);
+            var gobFlavors = await _context.GobFlavors.FindAsync(id);
 
             if (gobFlavors == null)
             {
@@ -45,7 +45,7 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/GobFlavors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGobFlavors(Guid id, GobFlavors gobFlavors)
+        public async Task<IActionResult> PutGobFlavors(string id, GobFlavors gobFlavors)
         {
             if (id != gobFlavors.FlavorID)
             {
@@ -78,31 +78,45 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPost]
         public async Task<ActionResult<GobFlavors>> PostGobFlavors(GobFlavors gobFlavors)
         {
-            _context.Gob.Add(gobFlavors);
-            await _context.SaveChangesAsync();
+            _context.GobFlavors.Add(gobFlavors);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (GobFlavorsExists(gobFlavors.FlavorID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtAction("GetGobFlavors", new { id = gobFlavors.FlavorID }, gobFlavors);
         }
 
         // DELETE: api/GobFlavors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGobFlavors(Guid id)
+        public async Task<IActionResult> DeleteGobFlavors(string id)
         {
-            var gobFlavors = await _context.Gob.FindAsync(id);
+            var gobFlavors = await _context.GobFlavors.FindAsync(id);
             if (gobFlavors == null)
             {
                 return NotFound();
             }
 
-            _context.Gob.Remove(gobFlavors);
+            _context.GobFlavors.Remove(gobFlavors);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool GobFlavorsExists(Guid id)
+        private bool GobFlavorsExists(string id)
         {
-            return _context.Gob.Any(e => e.FlavorID == id);
+            return _context.GobFlavors.Any(e => e.FlavorID == id);
         }
     }
 }

@@ -23,16 +23,16 @@ namespace API_BlobsOfGobs.Controllers
 
         // GET: api/OrderGobs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<OrderGob>>> GetOrderGob()
+        public async Task<ActionResult<IEnumerable<OrderGob>>> GetOrderGobs()
         {
-            return await _context.OrderGob.ToListAsync();
+            return await _context.OrderGobs.ToListAsync();
         }
 
         // GET: api/OrderGobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderGob>> GetOrderGob(Guid id)
+        public async Task<ActionResult<OrderGob>> GetOrderGob(string id)
         {
-            var orderGob = await _context.OrderGob.FindAsync(id);
+            var orderGob = await _context.OrderGobs.FindAsync(id);
 
             if (orderGob == null)
             {
@@ -45,7 +45,7 @@ namespace API_BlobsOfGobs.Controllers
         // PUT: api/OrderGobs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderGob(Guid id, OrderGob orderGob)
+        public async Task<IActionResult> PutOrderGob(string id, OrderGob orderGob)
         {
             if (id != orderGob.OrderGobID)
             {
@@ -78,31 +78,45 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderGob>> PostOrderGob(OrderGob orderGob)
         {
-            _context.OrderGob.Add(orderGob);
-            await _context.SaveChangesAsync();
+            _context.OrderGobs.Add(orderGob);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (OrderGobExists(orderGob.OrderGobID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtAction("GetOrderGob", new { id = orderGob.OrderGobID }, orderGob);
         }
 
         // DELETE: api/OrderGobs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrderGob(Guid id)
+        public async Task<IActionResult> DeleteOrderGob(string id)
         {
-            var orderGob = await _context.OrderGob.FindAsync(id);
+            var orderGob = await _context.OrderGobs.FindAsync(id);
             if (orderGob == null)
             {
                 return NotFound();
             }
 
-            _context.OrderGob.Remove(orderGob);
+            _context.OrderGobs.Remove(orderGob);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool OrderGobExists(Guid id)
+        private bool OrderGobExists(string id)
         {
-            return _context.OrderGob.Any(e => e.OrderGobID == id);
+            return _context.OrderGobs.Any(e => e.OrderGobID == id);
         }
     }
 }

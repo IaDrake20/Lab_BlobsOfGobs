@@ -1,28 +1,39 @@
-﻿namespace API_BlobsOfGobs
+﻿using System.Drawing.Printing;
+
+namespace API_BlobsOfGobs
 {
     public class OrderGob
     {
-        private Guid customerid;
-        private Guid flavorid;
-        private Guid ordergobid;
+        private String flavorid;
+        private String ordergobid;
+        private String orderID;
+        private int number;
 
-        public Guid OrderGobID
+        public String OrderGobID
         {
             get { return ordergobid; }
             set { ordergobid = value; }
         }
 
-        public Guid FlavorID { 
+        public String FlavorID { 
 
             get { return flavorid; }
             set { flavorid = value; }
         }
 
-        public Guid CustomerID {
-
-            get { return customerid; } 
-            set {  customerid = value; } 
+        public int Quantity
+        {
+            get { return number; }
+            set { number = value; }
         }
+
+        public String OrderID
+        {
+            get { return orderID; }
+            set { orderID = value; }
+        }
+
+
 
     }
 }

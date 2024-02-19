@@ -3,17 +3,17 @@
 namespace API_BlobsOfGobs
 {
     /**
-     * IAN: Customer composed of a guid to for referencing, name, and order(s)
+     * IAN: Customer composed of a String to for referencing, name, and order(s)
      **/
     public class Customers
     {
-        private Guid _guid = new Guid();
+        private String _String = "";
 
         [Key]
-        public Guid CustomerID
+        public String CustomerID
         {
-            get { return _guid; }
-            set { _guid = value; }
+            get { return _String; }
+            set { _String = value; }
         }
 
         private string? _fname;
@@ -28,14 +28,6 @@ namespace API_BlobsOfGobs
         {
             get { return _lname; }
             set { _lname = value; }
-        }
-
-        //IAN: not sure to use Gob or some kind of order class
-        private List<GobFlavors> orders = new List<GobFlavors>();
-        public List<GobFlavors> Orders
-        {
-            get { return orders; }
-            set { orders = value; }
         }
     }
 }

@@ -16,24 +16,62 @@ public partial class BlobsOfGobsContext : DbContext
     {
     }
 
-    public virtual DbSet<Order> Orders { get; set; }
+    public DbSet<API_BlobsOfGobs.Customers> Customers { get; set; } = default!;
+
+    public DbSet<API_BlobsOfGobs.GobFlavors> GobFlavors { get; set; } = default!;
+
+    public DbSet<API_BlobsOfGobs.Orders> Orders { get; set; } = default!;
+
+    public DbSet<API_BlobsOfGobs.OrderGob> OrderGobs { get; set; } = default!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DefaultConnection");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Customer>(entity =>
+        {
+            entity.HasKey(e => e.CustomerId).HasName("PK_People");
+
+            entity.Property(e => e.CustomerId)
+                .HasMaxLength(36)
+                .IsUnicode(false)
+                .HasColumnName("CustomerID");
+            entity.Property(e => e.Fname)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Lname)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<GobFlavor>(entity =>
+        {
+            entity.HasKey(e => e.FlavorId).HasName("PK__GobFlavo__0B05D02F7ADD87ED");
+
+            entity.Property(e => e.FlavorId)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("FlavorID");
+            entity.Property(e => e.FlavorName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Order1);
+            entity.HasKey(e => e.OrderId).HasName("PK_Orders");
 
-            entity.Property(e => e.Order1)
-                .HasMaxLength(32)
-                .IsFixedLength()
-                .HasColumnName("Order");
-            entity.Property(e => e.Name)
-                .HasMaxLength(32)
-                .IsFixedLength();
+            entity.ToTable("Order");
+
+            entity.Property(e => e.OrderId)
+                .HasMaxLength(36)
+                .IsUnicode(false)
+                .HasColumnName("OrderID");
+            entity.Property(e => e.CustomerId)
+                .HasMaxLength(36)
+                .IsUnicode(false)
+                .HasColumnName("CustomerID");
         });
 
         OnModelCreatingPartial(modelBuilder);
@@ -41,11 +79,5 @@ public partial class BlobsOfGobsContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-public DbSet<API_BlobsOfGobs.Orders> Order { get; set; } = default!;
 
-public DbSet<API_BlobsOfGobs.Customers> Customer { get; set; } = default!;
-
-public DbSet<API_BlobsOfGobs.GobFlavors> Gob { get; set; } = default!;
-
-public DbSet<API_BlobsOfGobs.OrderGob> OrderGob { get; set; } = default!;
 }
