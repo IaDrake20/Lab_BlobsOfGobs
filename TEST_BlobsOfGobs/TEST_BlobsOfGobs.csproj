@@ -28,4 +28,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlobsOfGobs\API_BlobsOfGobs.csproj" />
+  </ItemGroup>
+
 </Project>
