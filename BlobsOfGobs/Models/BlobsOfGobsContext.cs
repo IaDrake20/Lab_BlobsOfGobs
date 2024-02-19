@@ -16,11 +16,13 @@ public partial class BlobsOfGobsContext : DbContext
     {
     }
 
-    public virtual DbSet<Customer> Customers { get; set; }
+    public DbSet<API_BlobsOfGobs.Customers> Customers { get; set; } = default!;
 
-    public virtual DbSet<GobFlavor> GobFlavors { get; set; }
+    public DbSet<API_BlobsOfGobs.GobFlavors> GobFlavors { get; set; } = default!;
 
-    public virtual DbSet<Order> Orders { get; set; }
+    public DbSet<API_BlobsOfGobs.Orders> Orders { get; set; } = default!;
+
+    
 
     public virtual DbSet<OrderGob> OrderGobs { get; set; }
 
@@ -111,9 +113,5 @@ public partial class BlobsOfGobsContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-public DbSet<API_BlobsOfGobs.Customers> Customers_1 { get; set; } = default!;
 
-public DbSet<API_BlobsOfGobs.GobFlavors> GobFlavors_1 { get; set; } = default!;
-
-public DbSet<API_BlobsOfGobs.Orders> Orders_1 { get; set; } = default!;
 }

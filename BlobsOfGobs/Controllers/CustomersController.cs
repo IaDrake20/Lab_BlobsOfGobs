@@ -25,14 +25,14 @@ namespace API_BlobsOfGobs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customers>>> GetCustomers_1()
         {
-            return await _context.Customers_1.ToListAsync();
+            return await _context.Customers.ToListAsync();
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Customers>> GetCustomers(string id)
         {
-            var customers = await _context.Customers_1.FindAsync(id);
+            var customers = await _context.Customers.FindAsync(id);
 
             if (customers == null)
             {
@@ -78,7 +78,7 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPost]
         public async Task<ActionResult<Customers>> PostCustomers(Customers customers)
         {
-            _context.Customers_1.Add(customers);
+            _context.Customers.Add(customers);
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,13 +102,13 @@ namespace API_BlobsOfGobs.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomers(string id)
         {
-            var customers = await _context.Customers_1.FindAsync(id);
+            var customers = await _context.Customers.FindAsync(id);
             if (customers == null)
             {
                 return NotFound();
             }
 
-            _context.Customers_1.Remove(customers);
+            _context.Customers.Remove(customers);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace API_BlobsOfGobs.Controllers
 
         private bool CustomersExists(string id)
         {
-            return _context.Customers_1.Any(e => e.CustomerID == id);
+            return _context.Customers.Any(e => e.CustomerID == id);
         }
     }
 }

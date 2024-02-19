@@ -25,14 +25,14 @@ namespace API_BlobsOfGobs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GobFlavors>>> GetGobFlavors_1()
         {
-            return await _context.GobFlavors_1.ToListAsync();
+            return await _context.GobFlavors.ToListAsync();
         }
 
         // GET: api/GobFlavors/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GobFlavors>> GetGobFlavors(string id)
         {
-            var gobFlavors = await _context.GobFlavors_1.FindAsync(id);
+            var gobFlavors = await _context.GobFlavors.FindAsync(id);
 
             if (gobFlavors == null)
             {
@@ -78,7 +78,7 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPost]
         public async Task<ActionResult<GobFlavors>> PostGobFlavors(GobFlavors gobFlavors)
         {
-            _context.GobFlavors_1.Add(gobFlavors);
+            _context.GobFlavors.Add(gobFlavors);
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,13 +102,13 @@ namespace API_BlobsOfGobs.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGobFlavors(string id)
         {
-            var gobFlavors = await _context.GobFlavors_1.FindAsync(id);
+            var gobFlavors = await _context.GobFlavors.FindAsync(id);
             if (gobFlavors == null)
             {
                 return NotFound();
             }
 
-            _context.GobFlavors_1.Remove(gobFlavors);
+            _context.GobFlavors.Remove(gobFlavors);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace API_BlobsOfGobs.Controllers
 
         private bool GobFlavorsExists(string id)
         {
-            return _context.GobFlavors_1.Any(e => e.FlavorID == id);
+            return _context.GobFlavors.Any(e => e.FlavorID == id);
         }
     }
 }

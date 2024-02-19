@@ -25,14 +25,14 @@ namespace API_BlobsOfGobs.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Orders>>> GetOrders_1()
         {
-            return await _context.Orders_1.ToListAsync();
+            return await _context.Orders.ToListAsync();
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Orders>> GetOrders(string id)
         {
-            var orders = await _context.Orders_1.FindAsync(id);
+            var orders = await _context.Orders.FindAsync(id);
 
             if (orders == null)
             {
@@ -78,7 +78,7 @@ namespace API_BlobsOfGobs.Controllers
         [HttpPost]
         public async Task<ActionResult<Orders>> PostOrders(Orders orders)
         {
-            _context.Orders_1.Add(orders);
+            _context.Orders.Add(orders);
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,13 +102,13 @@ namespace API_BlobsOfGobs.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrders(string id)
         {
-            var orders = await _context.Orders_1.FindAsync(id);
+            var orders = await _context.Orders.FindAsync(id);
             if (orders == null)
             {
                 return NotFound();
             }
 
-            _context.Orders_1.Remove(orders);
+            _context.Orders.Remove(orders);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -116,7 +116,7 @@ namespace API_BlobsOfGobs.Controllers
 
         private bool OrdersExists(string id)
         {
-            return _context.Orders_1.Any(e => e.OrderID == id);
+            return _context.Orders.Any(e => e.OrderID == id);
         }
     }
 }
